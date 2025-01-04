@@ -23,7 +23,8 @@ A number of “readability tests” have been developed over the years that defi
 index = 0.0588 * L - 0.296 * S - 15.8
 ```
 
-where `L` is the average number of letters per 100 words in the text, and `S` is the average number of sentences per 100 words in the text.
+- `L` is the average number of letters per 100 words in the text (`nb_letters * 100 / nb_words`)
+- `S` is the average number of sentences per 100 words in the text (`nb_sentences * 100 / nb_words`).
 
 # When to Do it
 
@@ -34,8 +35,8 @@ By Sunday, january 26, 2025 at 11:59 PM
 Test your script with command `./check readability grade1.txt`
 
 ```bash
-./check readability grade1.txt
-Grade 1
+./check readability grade2.txt
+Grade 2
 ```
 
 Try running your program on the following texts, to ensure you see the specified grade level. Be sure to copy only the text, no extra spaces.
