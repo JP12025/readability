@@ -4,7 +4,8 @@
 
 # What to Do
 
-What does it mean for a book to be at a particular reading level?
+"Une vengeance de Jeannot Lapin ou Aide-toi toi-même" written by Jules Masson in 1888 is considered 
+a 12-grade reading level... But what does it mean for a book to be at a particular reading level?
 
 Well, in many cases, a human expert might read a book and make a decision on the grade (i.e., year in school) for which they think the book is most appropriate. 
 But an algorithm could likely figure that out too!
