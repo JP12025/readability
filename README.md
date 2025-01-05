@@ -32,14 +32,18 @@ By Sunday, january 26, 2025 at 11:59 PM
 
 # How to Test
 
-Test your script with command `./check readability grade1.txt`
+Two files are given for testing: `canard.txt` and `lapin.txt` (in French but without accent for simplicity).
 
 ```bash
-./check readability grade2.txt
-Grade 2
+./check readability canard.txt
+Grade 12
+./check readability lapin.txt
+Grade 11
 ```
 
-Try running your program on the following texts, to ensure you see the specified grade level. Be sure to copy only the text, no extra spaces.
+Test your script with command `./check readability`
+
+`check` runs your program on the following texts. It may be safer to run them independently.
 
 `One fish. Two fish. Red fish. Blue fish.` (Before Grade 1)
 
