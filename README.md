@@ -1,6 +1,6 @@
 # Readability
 
-![Une vengeance de Jeannot Lapin ou Aide-toi toi-même|100](https://litterature-jeunesse-libre.fr/bbs/cover/624/og?c=1562865108)
+![Une vengeance de Jeannot Lapin ou Aide-toi toi-même](https://gallica.bnf.fr/iiif/ark:/12148/bpt6k3192409/f15/151.91728395061722,490.2790123456788,1133.2197530864198,1194.871604938271/386,407/0/native.jpg)
 
 # What to Do
 
