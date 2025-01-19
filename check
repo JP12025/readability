@@ -87,16 +87,21 @@ run_test () {
 ##################################################
 # Run tests
 ##################################################
-run_test "Readability -1" "01"
-run_test "Readability 2" "02"
-run_test "Readability 3" "03"
-run_test "Readability 5" "04"
-run_test "Readability 7" "05"
-run_test "Readability 8" "06"
-run_test "Readability 8" "07"
-run_test "Readability 9" "08"
-run_test "Readability 10" "09"
-run_test "Readability 16+" "10"
+run_test "Readability 01 - grade -1" "01"
+run_test "Readability 02 - grade 2" "02"
+run_test "Readability 03 - grade 3" "03"
+run_test "Readability 04 - grade 5" "04"
+run_test "Readability 05 - grade 7" "05"
+run_test "Readability 06 - grade 8" "06"
+run_test "Readability 07 - grade 8" "07"
+run_test "Readability 08 - grade 9" "08"
+run_test "Readability 09 - grade 10" "09"
+run_test "Readability 10 - grade 16+" "10"
+run_test "Readability 11 - grade 10" "11"
+run_test "Readability 12 - grade 16+" "12"
+run_test "Readability 13 - grade 6" "13"
+run_test "Readability 14 - grade 8" "14"
+run_test "Readability 15 - grade 12" "15"
 
 ##################################################
 # Print Summary
