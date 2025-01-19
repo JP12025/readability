@@ -5,7 +5,7 @@
 # What to Do
 
 "Une vengeance de Jeannot Lapin ou Aide-toi toi-même" written by Jules Masson in 1888 is considered 
-a grade 12 reading level... But what does it mean for a book to be at a particular reading level?
+a grade 11 reading level... But what does it mean for a book to be at a particular reading level?
 
 Well, in many cases, a human expert might read a book and make a decision on the grade (i.e., year in school) for which they think the book is most appropriate. 
 But an algorithm could likely figure that out too!
@@ -13,8 +13,15 @@ But an algorithm could likely figure that out too!
 In a file called `readability`, you’ll implement a program that calculates the approximate grade level needed to comprehend some text (in a file given on the command line). Your program should print as output “Grade X” where “X” is the grade level computed, rounded to the nearest integer. If the grade level is 16 or higher (equivalent to or greater than a senior undergraduate reading level), your program should output “Grade 16+” instead of giving the exact index number. If the grade level is less than 1, your program should output “Before Grade 1”.
 
 > [!Note]
-> Your program should be executable and take a filename on command line
+> Your program should be executable and take a file name on command line
 > `./readability file.txt`
+
+If no file name is given, the program should print a usage message.
+
+```bash
+$ ./readabiblity
+Usage: ./readability filename
+```
 
 ## The Coleman-Liau index
 
