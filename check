@@ -65,6 +65,7 @@ run_test () {
     TEST_OUT=".test/${TEST_NUM}_test.out"
     TEST_DIFF=".test/${TEST_NUM}_test.diff"
     ./${EXP_SCRIPT} ${TEST_PARAM}  > ${TEST_OUT}
+    dos2unix ${TEST_OUT}
     diff ${TEST_EXP} ${TEST_OUT} > ${TEST_DIFF}
     NB_DIFF=`cat ${TEST_DIFF} | wc -l`
     NB_TEST_TOTAL=$((NB_TEST_TOTAL+1))
