@@ -38,7 +38,7 @@ index = 0.0588 * L - 0.296 * S - 15.8
 
 # When to Do it
 
-By Sunday, january 26, 2025 at 11:59 PM
+By Sunday, February 1, 2026 at 11:59 PM
 
 # How to Test
 
