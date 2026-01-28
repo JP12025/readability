@@ -30,7 +30,7 @@ DATA_OUT = [
     "Grade 3",
     "Grade 5",
     "Grade 7",
-    "Grade 7",
+    "Grade 8",
     "Grade 8",
     "Grade 9",
     "Grade 10",
