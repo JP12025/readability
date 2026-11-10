@@ -1,0 +1,12 @@
+The genome of an organism comprises the complete set of its hereditary
+information, encoded in the nucleotide sequence of its deoxyribonucleic
+acid. Although every somatic cell contains essentially identical genetic
+material, cellular differentiation produces remarkably diverse tissues,
+because transcriptional regulation determines which genes are expressed
+in particular circumstances.
+
+Consequently, understanding gene expression requires integrating
+experimental measurements with computational analyses. Bioinformatics
+provides the algorithms, statistical methods and databases necessary for
+interpreting sequencing data, predicting protein structures and
+reconstructing evolutionary relationships between species.

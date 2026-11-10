@@ -1,26 +1,38 @@
 # Readability
 
-![Une vengeance de Jeannot Lapin ou Aide-toi toi-même](https://gallica.bnf.fr/iiif/ark:/12148/bpt6k3192409/f15/151.91728395061722,490.2790123456788,1133.2197530864198,1194.871604938271/386,407/0/native.jpg)
-
 # What to Do
 
-"Une vengeance de Jeannot Lapin ou Aide-toi toi-même" written by Jules Masson in 1888 is considered 
-a grade 11 reading level... But what does it mean for a book to be at a particular reading level?
+Some books are written for young children, others for university students.
+But what does it mean for a text to be at a particular reading level?
 
-Well, in many cases, a human expert might read a book and make a decision on the grade (i.e., year in school) for which they think the book is most appropriate. 
+Well, in many cases, a human expert might read a book and make a decision on the grade (i.e., year in school) for which they think the book is most appropriate.
 But an algorithm could likely figure that out too!
 
-In a file called `readability`, you’ll implement a program that calculates the approximate grade level needed to comprehend some text (in a file given on the command line). Your program should print as output “Grade X” where “X” is the grade level computed, rounded to the nearest integer. If the grade level is 16 or higher (equivalent to or greater than a senior undergraduate reading level), your program should output “Grade 16+” instead of giving the exact index number. If the grade level is less than 1, your program should output “Before Grade 1”.
-
-> [!Note]
-> Your program should be executable and take a file name on command line
-> `./readability file.txt`
-
-If no file name is given, the program should print a usage message.
+In a file called `readability.py`, write a Python program that calculates the approximate grade level needed to comprehend some text.
+The text is stored in a file whose name is given on the command line.
 
 ```bash
-$ ./readabiblity
-Usage: ./readability filename
+$ python readability.py cells.txt
+Grade 3
+```
+
+Your program should print as output `Grade X` where `X` is the grade level computed, rounded to the nearest integer.
+If the grade level is 16 or higher (equivalent to or greater than a senior undergraduate reading level), your program should output `Grade 16+` instead of giving the exact index number.
+If the grade level is less than 1, your program should output `Before Grade 1`.
+
+```bash
+$ python readability.py genome.txt
+Grade 16+
+```
+
+There must be exactly one command-line argument (the file name).
+If not, the program should print `Usage: python readability.py filename` and stop.
+
+```bash
+$ python readability.py
+Usage: python readability.py filename
+$ python readability.py cells.txt genome.txt
+Usage: python readability.py filename
 ```
 
 ## The Coleman-Liau index
@@ -36,24 +48,71 @@ index = 0.0588 * L - 0.296 * S - 15.8
 - `L` is the average number of letters per 100 words in the text (`nb_letters * 100 / nb_words`)
 - `S` is the average number of sentences per 100 words in the text (`nb_sentences * 100 / nb_words`).
 
-# When to Do it
+The grade is `index` rounded to the nearest integer: if this grade is less than `1`, print `Before Grade 1`; if it is `16` or more, print `Grade 16+`.
 
-By Sunday, February 1, 2026 at 11:59 PM
+> [!IMPORTANT]
+> The Coleman-Liau formula was designed and calibrated with **English** texts only.
+> French words, for instance, are longer on average than English words, so a French text gets a much higher grade than its real difficulty: the result means nothing.
+> That is why all the texts of this exercise are in English.
+
+## Letters, words and sentences
+
+To get the same results as the tests, count as follows:
+
+- a **letter** is a character for which the method `isalpha()` returns `True` (`a` to `z`, `A` to `Z`). Digits, spaces and punctuation marks are not letters.
+- a **word** is a sequence of characters separated by spaces or newlines. Thus `self-conscious`, `you're` and `fish.` are one word each.
+- a **sentence** ends with a `.`, a `!` or a `?`. Count one sentence for each of these characters.
+
+> [!NOTE]
+> It is an approximation: in `Mr. Smith is here.`, your program will count two sentences. That's fine, the formula is an approximation too.
+
+For instance, the text `One fish. Two fish! Red fish? Blue fish.` has 29 letters, 8 words and 4 sentences, so:
+
+- `L = 29 * 100 / 8 = 362.5`
+- `S = 4 * 100 / 8 = 50.0`
+- `index = 0.0588 * 362.5 - 0.296 * 50.0 - 15.8 = -9.285`, rounded to `-9`, so `Before Grade 1`.
+
+> [!TIP]
+> The command-line arguments are stored in the list `sys.argv` (after `import sys`).
+> `sys.argv[0]` is the name of the script, so for `python readability.py cells.txt`, `sys.argv` is `['readability.py', 'cells.txt']`.
+> To stop your program right away, you may use `sys.exit()`.
+
+> [!TIP]
+> The method `read()` returns the whole content of a file as one `str` (newlines included):
+> ```python
+> with open(filename) as text_file:
+>     text = text_file.read()
+> ```
+> Then, the methods `isalpha()` and `split()` of `str`, and the function `round()` will help you. Read the Doc!
+> What does `split()` return when two words are separated by a newline? And by two spaces?
 
 # How to Test
 
-Two files are given for testing: `canard.txt` and `lapin.txt` (in French but without accent for simplicity).
+Three text files are given for testing:
 
 ```bash
-./check readability canard.txt
+$ python readability.py cells.txt
+Grade 3
+$ python readability.py evolution.txt
 Grade 12
-./check readability lapin.txt
-Grade 11
+$ python readability.py genome.txt
+Grade 16+
 ```
 
-Test your script with command `./check readability`
+Then test your program from the exercise folder with:
 
-`check` runs your program on the following texts. It may be safer to run them independently.
+```bash
+python test_readability.py
+```
+
+(use `python3` instead of `python` if that is how you run Python on your computer).
+
+The script runs your program as a user would: it writes a text in a file, gives the name of this file to your program on the command line, then checks what your program prints.
+When a test fails, it explains what is wrong and gives the expected numbers of letters, words and sentences, so that you can compare them with yours.
+After all the tests, it tries to find the probable cause of the wrong results.
+
+Don't forget it's important to test your program yourself too.
+Copy each of these texts in a file and check the grade computed by your program:
 
 `One fish. Two fish. Red fish. Blue fish.` (Before Grade 1)
 
@@ -61,13 +120,7 @@ Test your script with command `./check readability`
 
 `Congratulations! Today is your day. You're off to Great Places! You're off and away!` (Grade 3)
 
-`Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework, but was forced to do it in secret, in the dead of the night. And he also happened to be a wizard.` (Grade 5)
-
 `In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.` (Grade 7)
-
-`Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, "and what is the use of a book," thought Alice "without pictures or conversation?"` (Grade 8)
-
-`When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow. When it healed, and Jem's fears of never being able to play football were assuaged, he was seldom self-conscious about his injury. His left arm was somewhat shorter than his right; when he stood or walked, the back of his hand was at right angles to his body, his thumb parallel to his thigh.` (Grade 8)
 
 `There are more things in Heaven and Earth, Horatio, than are dreamt of in your philosophy.` (Grade 9)
 
@@ -75,10 +128,15 @@ Test your script with command `./check readability`
 
 `A large class of computational problems involve the determination of properties of graphs, digraphs, integers, arrays of integers, finite families of finite sets, boolean formulas and elements of other countable domains.` (Grade 16+)
 
+What happens if:
+* the text contains digits?
+* the text is written on several lines?
+* there are two spaces between two sentences?
+
 # How to Submit
 
 Once you're done with all tasks, submit all your python files for the week on Moodle.
 
 # Licence
 
-This course is freely inspird from [CS50’s Introduction to Computer Science](https://cs50.harvard.edu/x/2025/) Harvard. It is licensed under a [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. 
+This course is freely inspired by [CS50’s Introduction to Computer Science](https://cs50.harvard.edu/x/2025/) Harvard. It is licensed under a [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
