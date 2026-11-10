@@ -11,10 +11,7 @@ But an algorithm could likely figure that out too!
 In a file called `readability.py`, write a Python program that calculates the approximate grade level needed to comprehend some text.
 The text is stored in a file whose name is given on the command line.
 
-```bash
-$ python readability.py cells.txt
-Grade 3
-```
+![Demo of readability.py](readability.gif)
 
 Your program should print as output `Grade X` where `X` is the grade level computed, rounded to the nearest integer.
 If the grade level is 16 or higher (equivalent to or greater than a senior undergraduate reading level), your program should output `Grade 16+` instead of giving the exact index number.
